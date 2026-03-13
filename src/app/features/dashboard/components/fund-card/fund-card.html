@@ -1,0 +1,33 @@
+<mat-card class="fund-card" [class.subscribed]="isSubscribed">
+  <mat-card-header>
+    <div mat-card-avatar class="fund-avatar">
+      <mat-icon>{{ fund.category === 'FPV' ? 'savings' : 'trending_up' }}</mat-icon>
+    </div>
+    <mat-card-title>{{ fund.name.replace(/_/g, ' ') }}</mat-card-title>
+    <mat-card-subtitle>Category: {{ fund.category }}</mat-card-subtitle>
+  </mat-card-header>
+  
+  <mat-card-content>
+    <p class="min-amount">
+      <mat-icon>payments</mat-icon>
+      Minimum Amount: <strong>{{ fund.minAmount | currency:'COP':'symbol-narrow':'1.0-0' }}</strong>
+    </p>
+    <div *ngIf="isSubscribed" class="status-badge active">
+      <mat-icon>check_circle</mat-icon>
+      Active Subscription
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-stroked-button color="warn" *ngIf="isSubscribed" (click)="onCancel()">
+      Cancel Subscription
+    </button>
+    
+    <button mat-raised-button color="primary" 
+            *ngIf="!isSubscribed" 
+            [disabled]="!canSubscribe" 
+            (click)="onSubscribe()">
+      Subscribe
+    </button>
+  </mat-card-actions>
+</mat-card>
