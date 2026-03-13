@@ -1,0 +1,88 @@
+.header-toolbar {
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  
+  mat-icon {
+    font-size: 28px;
+    height: 28px;
+    width: 28px;
+  }
+  
+  .app-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  margin-right: 2rem;
+
+  button {
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &.active-link {
+      background: rgba(255, 255, 255, 0.1);
+      opacity: 1;
+    }
+  }
+}
+
+.balance-container {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+
+  .balance-label {
+    font-size: 0.875rem;
+    opacity: 0.9;
+  }
+
+  .balance-amount {
+    font-size: 1.1rem;
+    color: #ffdfd8;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-toolbar {
+    padding: 0 1rem;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+  
+  .balance-container {
+    padding: 0.25rem 0.5rem;
+  }
+}
