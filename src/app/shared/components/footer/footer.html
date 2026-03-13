@@ -1,0 +1,17 @@
+<footer class="app-footer">
+  <div class="accordion-content" [@expandCollapse]="isExpanded ? 'expanded' : 'collapsed'">
+    <div class="creator-details">
+      <img src="Logo.png" alt="Logo" class="logo-img" />
+      <div class="creator-info">
+        <h3>Developed By</h3>
+        <p class="name">elkingutierrex</p>
+        <p class="year">© 2026</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-header" (click)="toggleAccordion()">
+    <span>About Creator</span>
+    <mat-icon [@rotateIcon]="isExpanded ? 'expanded' : 'collapsed'">expand_less</mat-icon>
+  </div>
+</footer>
