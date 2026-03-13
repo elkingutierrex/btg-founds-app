@@ -150,7 +150,7 @@ Al cancelar:
 
 # Tecnologías Utilizadas
 
-- **Angular 19**
+- **Angular 21**
 - **Standalone Components**
 - **Zoneless Change Detection**
 - **Angular Material**
