@@ -1,0 +1,20 @@
+<mat-toolbar color="primary" class="header-toolbar">
+  <div class="logo-container" routerLink="/dashboard">
+    <mat-icon>account_balance</mat-icon>
+    <span class="app-title">egx | BTG Funds</span>
+  </div>
+
+  <span class="spacer"></span>
+
+  <nav class="nav-links">
+    <button mat-button routerLink="/dashboard" routerLinkActive="active-link">Dashboard</button>
+    <button mat-button routerLink="/transactions" routerLinkActive="active-link">History</button>
+  </nav>
+
+  <div class="balance-container" *ngIf="userData$ | async as userData">
+    <span class="balance-label">Balance:</span>
+    <span class="balance-amount">{{
+      userData.balance | currency: 'COP' : 'symbol-narrow' : '1.0-0'
+    }}</span>
+  </div>
+</mat-toolbar>
