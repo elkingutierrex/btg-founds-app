@@ -1,0 +1,32 @@
+.subscribe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.fund-info {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.fund-limits {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0;
+}
+
+.text-warn {
+  color: #f44336;
+  font-weight: 500;
+}
+
+mat-dialog-content {
+  min-width: 350px;
+  overflow-y: visible;
+}

@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Subscribe to Fund</h2>
+
+<mat-dialog-content>
+  <p class="fund-info">
+    You are subscribing to <strong>{{ data.fund.name.replace(/_/g, ' ') }}</strong>
+  </p>
+  <p class="fund-limits">
+    Min: {{ data.fund.minAmount | currency:'COP':'symbol-narrow':'1.0-0' }} | 
+    Available: <span [class.text-warn]="data.maxAmount < data.fund.minAmount">{{ data.maxAmount | currency:'COP':'symbol-narrow':'1.0-0' }}</span>
+  </p>
+
+  <form [formGroup]="subscribeForm" (ngSubmit)="onSubmit()" class="subscribe-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Investment Amount (COP)</mat-label>
+      <input matInput type="number" formControlName="amount">
+      <mat-error *ngIf="subscribeForm.get('amount')?.hasError('required')">
+        Amount is required.
+      </mat-error>
+      <mat-error *ngIf="subscribeForm.get('amount')?.hasError('min')">
+        Minimum amount is {{ data.fund.minAmount | currency:'COP':'symbol-narrow':'1.0-0' }}.
+      </mat-error>
+      <mat-error *ngIf="subscribeForm.get('amount')?.hasError('max')">
+        Insufficient balance. You only have {{ data.maxAmount | currency:'COP':'symbol-narrow':'1.0-0' }}.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Notification Preference</mat-label>
+      <mat-select formControlName="notificationPref">
+        <mat-option value="EMAIL">Email</mat-option>
+        <mat-option value="SMS">SMS</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="subscribeForm.invalid" (click)="onSubmit()">Confirm Subscription</button>
+</mat-dialog-actions>
