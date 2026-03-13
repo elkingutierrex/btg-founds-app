@@ -1,0 +1,22 @@
+<div class="dashboard-container">
+  <div class="header-section">
+    <h1>Available Funds</h1>
+    <p class="subtitle">Select a fund to invest your balance</p>
+  </div>
+
+  <div *ngIf="loading" class="loading-container">
+    <mat-spinner diameter="40"></mat-spinner>
+    <p>Loading funds...</p>
+  </div>
+
+  <div *ngIf="!loading" class="funds-grid">
+    <app-fund-card 
+      *ngFor="let fund of funds" 
+      [fund]="fund"
+      [isSubscribed]="isSubscribed(fund.id)"
+      [canSubscribe]="canSubscribe(fund)"
+      (subscribe)="openSubscribeDialog($event)"
+      (cancel)="cancelSubscription($event)">
+    </app-fund-card>
+  </div>
+</div>
